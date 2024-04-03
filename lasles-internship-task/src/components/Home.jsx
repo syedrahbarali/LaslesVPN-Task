@@ -1,5 +1,4 @@
 import { NavLink, Outlet } from "react-router-dom";
-import logo from "../assets/Logo.svg";
 import { AiOutlineMenu } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import { useState } from "react";
@@ -8,8 +7,8 @@ const Home = () => {
   let [isClicked, setIsClicked] = useState(false);
   return (
     <>
-      <div className="w-[70vw] h-[100px] flex items-center justify-between m-auto">
-        <img src={logo} className="" />
+      <div className="w-[70vw] h-[140px] flex items-center justify-between m-auto">
+        <img src="./images/Logo.svg" className="" />
 
         <nav className="hidden xl:flex gap-10">
           {["About", "Feature", "Pricing", "Testimonials", "Help"].map(
@@ -24,8 +23,10 @@ const Home = () => {
         </nav>
 
         <div className="flex gap-5 items-center">
-          <button className="w-[70px] font-semibold">Sign in</button>
-          <button className="text-[#F53855] w-[150px] h-[45px] border-2 border-[#F53855] border-solid rounded-full font-semibold">
+          <button className="hidden md:block sm:w-[50px] sm:text-sm md:text-base md:w-[70px] font-semibold">
+            Sign in
+          </button>
+          <button className="text-[#F53855] hidden md:block sm:w-[90px] sm:text-sm md:text-base md:w-[150px] h-[45px] border-2 border-[#F53855] border-solid rounded-full font-semibold">
             Sign up
           </button>
           {isClicked ? (
@@ -43,9 +44,9 @@ const Home = () => {
       </div>
 
       <div
-        className={`w-[70vw] transition-all ${
+        className={`w-[70vw] ${
           isClicked ? "block" : "hidden"
-        } m-auto text-center font-medium`}
+        } m-auto text-center font-medium lg:hidden`}
       >
         {["About", "Feature", "Pricing", "Testimonials", "Help"].map((item) => {
           return (
