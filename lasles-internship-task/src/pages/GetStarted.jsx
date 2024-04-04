@@ -1,12 +1,14 @@
-const GetStarted = () => {
+import { useRef } from "react";
+
+const GetStarted = ({ ref }) => {
   return (
     <>
-      <div className="w-[70vw] xl:h-[55vh] grid items-center m-auto">
-        <div className="w-full flex seld-ce gap-14 flex-wrap-reverse xl:flex-nowrap">
+      <div className="xs:w-[80vw] md:w-[70vw] xl:h-[55vh] grid items-center m-auto">
+        <div className="w-full flex justify-center seld-ce gap-14 flex-wrap-reverse xl:flex-nowrap">
           {/* Left-part */}
           <div className="grid gap-6">
             <div className="grid gap-2">
-              <h1 className="text-[1.5rem] md:text-[2.5rem] font-medium w-9/12">
+              <h1 className="text-[1.5rem] md:text-[2.2rem] font-medium w-10/12">
                 Want anything to be easy with
                 <span className="font-bold"> LaslesVPN.</span>
               </h1>
@@ -24,7 +26,7 @@ const GetStarted = () => {
           </div>
 
           {/* Right-part */}
-          <div className="">
+          <div className="w-full flex justify-center">
             <img src="/images/Illustration 1.svg" />
           </div>
         </div>

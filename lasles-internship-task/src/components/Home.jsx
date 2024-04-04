@@ -7,16 +7,16 @@ const Home = () => {
   let [isClicked, setIsClicked] = useState(false);
   return (
     <>
-      <div className="w-[70vw] h-[140px] flex items-center justify-between m-auto">
+      <div className="xs:w-[85vw] md:w-[70vw] h-[100px] lg:h-[140px] flex items-center justify-between m-auto">
         <img src="./images/Logo.svg" className="" />
 
         <nav className="hidden xl:flex gap-10">
           {["About", "Feature", "Pricing", "Testimonials", "Help"].map(
             (item) => {
               return (
-                <NavLink className="hover:text-gray-600" to="">
+                <div className="hover:text-gray-600" key={item}>
                   {item}
-                </NavLink>
+                </div>
               );
             }
           )}
@@ -44,15 +44,15 @@ const Home = () => {
       </div>
 
       <div
-        className={`w-[70vw] ${
+        className={`xs:w-[85vw] md:w-[70vw] ${
           isClicked ? "block" : "hidden"
         } m-auto text-center font-medium lg:hidden`}
       >
         {["About", "Feature", "Pricing", "Testimonials", "Help"].map((item) => {
           return (
-            <NavLink className="hover:text-gray-600 block p-3" to="">
+            <div className="hover:text-gray-600 block p-3" key={`${item}`}>
               {item}
-            </NavLink>
+            </div>
           );
         })}
       </div>

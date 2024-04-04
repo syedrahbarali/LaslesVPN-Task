@@ -1,0 +1,8 @@
+.testimonial_container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.testimonial_container::-webkit-scrollbar {
+    display: none;
+  }
