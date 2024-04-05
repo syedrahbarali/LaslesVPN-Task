@@ -28,7 +28,7 @@ module.exports = {
       boxShadow: {
         lightShadow: "1px 15px 35px -14px #F53855",
         cardShadow: "0px 25px 40px -20px black",
-        carouselShadow: "0px 7px 20px -2px gray-100",
+        carouselShadow: "0px 7px 20px -2px black",
       },
     },
   },

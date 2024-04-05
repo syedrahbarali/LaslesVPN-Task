@@ -1,4 +1,4 @@
-import PricingCards from "../components/PricingCard";
+import NewPricingCards from "../components/PricingCards";
 
 const Pricing = () => {
   return (
@@ -13,7 +13,10 @@ const Pricing = () => {
         </p>
       </div>
 
-      <div>{/* <PricingCards /> */}</div>
+      <div>
+        {/* <PricingCards /> */}
+        <NewPricingCards />
+      </div>
     </div>
   );
 };

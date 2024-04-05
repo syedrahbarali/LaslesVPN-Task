@@ -75,6 +75,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Hamburger menu */}
       <div
         className={`xs:w-[85vw] md:w-[70vw] ${
           isClicked ? "block" : "hidden"

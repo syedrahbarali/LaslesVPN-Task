@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import SignIn from "../pages/SignIn";
 import Dashboard from "../pages/Dashboard";
 import { useSelector } from "react-redux";
+import NotFoundPage from "../pages/NotFoundPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.login);
@@ -16,6 +17,7 @@ function App() {
           path={isLoggedIn ? "dashboard" : "signin"}
           element={<Dashboard />}
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

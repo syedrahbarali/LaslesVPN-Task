@@ -1,0 +1,8 @@
+.pricing_container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pricing_container::-webkit-scrollbar {
+  display: none;
+}
