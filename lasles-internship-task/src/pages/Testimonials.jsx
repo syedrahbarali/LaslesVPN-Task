@@ -1,6 +1,7 @@
-import { useState } from "react";
 import TestimonialCard from "../components/TestimonialCard";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import "./Testimonials.css";
+import { useEffect, useRef, useState } from "react";
 
 const reviews = [
   {
@@ -48,75 +49,80 @@ const reviews = [
   // { image: "", location: "", comment: "" },
 ];
 
-function Testimonials() {
+function NewTestimonals() {
+  const testimonialCardContainer = useRef(null);
   let [currentSlide, setCurrentSlide] = useState(0);
-  const handleClick = (direction) => {
-    let slider = document.querySelector("#cards");
-    let width = slider.clientWidth;
-    setCurrentSlide(width + currentSlide);
 
+  const handleClick = (direction) => {
     if (direction === "left") {
-      currentSlide = width + currentSlide;
-      console.log(currentSlide);
+      testimonialCardContainer.current.scrollLeft -=
+        currentSlide < 2 ? testimonialCardContainer.current.offsetWidth : 400;
+      if (currentSlide > 0) {
+        setCurrentSlide(currentSlide - 1);
+      }
     } else {
-      currentSlide = width - currentSlide;
-      console.log(currentSlide);
+      testimonialCardContainer.current.scrollLeft += 400;
+      if (currentSlide < reviews.length - 1) {
+        setCurrentSlide(currentSlide + 1);
+      }
     }
   };
 
   return (
-    <div className="xs:w-[85vw] md:w-[70vw] h-[calc(25vh+320px)] overflow-hidden m-auto relative">
-      <div className="w-full h-[20vh]  grid place-items-center">
-        <h2 className="xs:w-[75%] md:w-[50%] text-center xs:text-2xl lg:text-4xl font-semibold">
+    <div className="w-[70%] h-[100vh] mb-10 grid grid-cols-1 content-around m-auto">
+      <div className="xs:w-[100%] md:w-[60%] grid gap-8 m-auto text-center">
+        <h2 className="md:w-[75%] m-auto xs:text-2xl lg:text-4xl font-semibold">
           Trusted by Thousands of Happy Customer
         </h2>
-        <p className="xs:w-[85%] md:w-[50%] text-center m-auto text-sm lg:text-base text-slate-600">
+        <p className="lg:w-[90%] text-sm lg:text-base text-slate-600">
           These are the stories of our customers who have joined us with great
           pleasure when using this crazy feature.
         </p>
       </div>
 
-      <div className="h-[300px] flex items-end overflow-hidden">
-        {/* Testimonial Cards */}
-        <div
-          id="cards"
-          className="w-fit bg-red-700 left-0 top-[60%] translate-y-[-60%] flex gap-5 absolute"
-        >
+      {/* Testimonials Cards Collection */}
+      <div
+        ref={testimonialCardContainer}
+        className="testimonial_container w-[100vw] grid grid-cols-1 content-between xs:h-[220px] lg:h-[250px] m-auto scroll-smooth overflow-x-auto"
+      >
+        <div className="flex gap-5 w-fit ">
           {reviews.map((review, index) => (
-            <TestimonialCard key={index} {...review} />
+            <TestimonialCard
+              key={index}
+              {...review}
+              currentSlide={currentSlide}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Pagination */}
+      <div className="flex justify-between items-center">
+        <div className="flex gap-2">
+          {reviews.map((review, index) => (
+            <div
+              key={index}
+              className={`h-[10px]  rounded-full ${
+                currentSlide === index
+                  ? "bg-laslesOrange w-[40px]"
+                  : "bg-slate-300 w-[10px]"
+              }`}
+            ></div>
           ))}
         </div>
 
-        <div className="w-full flex justify-between">
-          {/* Identification Circles */}
-          <div className="flex gap-2">
-            {reviews.map((review, index) => (
-              <div
-                key={index}
-                className={`w-[15px] h-[15px] rounded-full bg-gray-400`}
-              ></div>
-            ))}
-          </div>
-
-          {/* buttons */}
-          <div className="flex gap-5">
-            <button
-              onClick={() => handleClick("left")}
-              className="w-[40px] h-[40px] grid place-items-center text-white font-semibold rounded-full bg-laslesOrange"
-            >
-              <AiOutlineArrowLeft />
-            </button>
-            <button
-              onClick={() => handleClick("right")}
-              className="w-[40px] h-[40px] grid place-items-center text-white font-semibold rounded-full bg-laslesOrange"
-            >
-              <AiOutlineArrowRight />
-            </button>
-          </div>
+        <div className="flex gap-5">
+          <button onClick={() => handleClick("left")}>
+            <BsArrowLeftCircleFill className="text-laslesOrange text-4xl" />
+          </button>
+          <button onClick={() => handleClick("right")}>
+            <BsArrowRightCircleFill className="text-laslesOrange text-4xl" />
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-export default Testimonials;
+export default NewTestimonals;

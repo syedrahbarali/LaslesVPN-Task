@@ -11,7 +11,9 @@ function TestimonialCard({
   return (
     <div
       className={`xs:w-[300px] lg:w-[400px] xs:h-[180px] lg:h-[230px] p-5 ${
-        currentSlide === index ? "border-red-500" : "border-slate-300"
+        currentSlide === index
+          ? "border-red-500 shadow-carouselShadow shadow-gray-300"
+          : "border-slate-300"
       } rounded-lg border-2 grid gap-3 place-content-center-center`}
     >
       <div className="flex w-full xs:h-[60px] lg:h-[70px] justify-around items-center">
